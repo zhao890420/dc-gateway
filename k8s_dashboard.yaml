@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dc-gateteway-dashboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: dc-gateteway-dashboard
+  template:
+    metadata:
+      labels:
+        name: dc-gateteway-dashboard
+    spec:
+      containers:
+        - name: dc-gateteway-dashboard
+          image: dc-gateteway-dashboard
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8880
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dc-gateteway-dashboard
+spec:
+  ports:
+    - port: 8880
+      name: "dashboard"
+      targetPort: 8880
+      protocol: TCP
+      nodePort: 30088
+  type: NodePort
+  selector:
+    name: dc-gateteway-dashboard

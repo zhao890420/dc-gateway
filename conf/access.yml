@@ -1,0 +1,31 @@
+#################################### Logging #############################
+logger:
+    # Either "console", "file"
+    mode: file
+
+    # Either "debug", "info", "warn", "error", "dpanic", "panic", "fatal", default is "info"
+    level: info
+
+    # Output path
+    path: logs/access.log
+
+    # Output path of error
+    errpath: logs/access_err.log
+
+    # maxsize: 日志文件的最大容量, 单位MB
+    maxsize: 1024
+
+    # maxbackups 日志数量
+    maxbackups: 10
+
+    # maxage 日志保存天数
+    maxage: 2
+
+    # compress 压缩日志
+    compress: true
+
+    # development 开发环境
+    json: true
+    
+
+
