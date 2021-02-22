@@ -37,7 +37,7 @@ const (
 /**
  * @Author zhaoguang
  * @Description 启动管理后台服务
- * @Date 10:57 下午 2021/2/21
+ * @Date 10:57 下午 2021/2/22
  **/
 func init() {
 	StartCmd.PersistentFlags().StringVarP(&config, "config", "c", "conf/config.ini", "Start server with provided configuration file")
@@ -57,7 +57,6 @@ func setup() {
 	common.InitDatabase()
 	// 4. 初始化阿波罗配置
 	//common.InitApollo(apoEnv)
-
 }
 
 func run() error {

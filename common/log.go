@@ -68,12 +68,26 @@ func New(l *Logger) (*zap.Logger, error) {
 		LocalTime:  true,
 	}
 
+	encoderConfig := zapcore.EncoderConfig{
+		TimeKey:        "ts",
+		LevelKey:       "level",
+		NameKey:        "logger",
+		CallerKey:      "caller",
+		MessageKey:     "msg",
+		StacktraceKey:  "stacktrace",
+		LineEnding:     zapcore.DefaultLineEnding,
+		EncodeLevel:    zapcore.LowercaseLevelEncoder,
+		EncodeTime:     zapcore.ISO8601TimeEncoder,
+		EncodeDuration: zapcore.SecondsDurationEncoder,
+		EncodeCaller:   zapcore.ShortCallerEncoder,
+	}
+
 	// 根据环境设置不同日志格式
 	var encoder zapcore.Encoder
 	if !l.Json {
 		encoder = zapcore.NewConsoleEncoder(zap.NewDevelopmentEncoderConfig())
 	} else {
-		encoder = zapcore.NewJSONEncoder(zap.NewProductionEncoderConfig())
+		encoder = zapcore.NewJSONEncoder(encoderConfig)
 	}
 
 	core := zapcore.NewTee(

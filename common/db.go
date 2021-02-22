@@ -16,5 +16,6 @@ func InitDatabase() error {
 		return err
 	}
 	DefaultDbPool = vdb
+	DefLogger.Info("======finish db init ")
 	return nil
 }

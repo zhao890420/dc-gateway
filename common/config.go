@@ -26,4 +26,5 @@ func InitConfigFile(configFile string) {
 	} else {
 		TimeLocation = location
 	}
+	DefLogger.Info("======finish configFile init ")
 }
