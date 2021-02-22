@@ -32,7 +32,7 @@ func (t *TcpRule) ListByServiceID(c *gin.Context, tx *gorm.DB, serviceID int64) 
 	var list []TcpRule
 	var count int64
 	query := tx
-	query = query.Table(t.TableName()).Select("*")
+	query = query.Table(t.TableName())
 	query = query.Where("service_id=?", serviceID)
 	err := query.Order("id desc").Find(&list).Error
 	if err != nil && err != gorm.ErrRecordNotFound {

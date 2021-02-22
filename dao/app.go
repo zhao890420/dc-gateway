@@ -49,7 +49,7 @@ func (t *App) APPList(c *gin.Context, tx *gorm.DB, params *dto.APPListInput) ([]
 	//limit offset,pagesize
 	offset := (pageNo - 1) * pageSize
 	query := tx
-	query = query.Table(t.TableName()).Select("*")
+	query = query.Table(t.TableName())
 	query = query.Where("is_delete=?", 0)
 	if params.Info != "" {
 		query = query.Where(" (name like ? or app_id like ?)", "%"+params.Info+"%", "%"+params.Info+"%")

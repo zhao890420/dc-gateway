@@ -37,7 +37,7 @@ func (t *AccessControl) ListBYServiceID(c *gin.Context, tx *gorm.DB, serviceID i
 	var list []AccessControl
 	var count int64
 	query := tx
-	query = query.Table(t.TableName()).Select("*")
+	query = query.Table(t.TableName())
 	query = query.Where("service_id=?", serviceID)
 	err := query.Order("id desc").Find(&list).Error
 	if err != nil && err != gorm.ErrRecordNotFound {
