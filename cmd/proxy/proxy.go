@@ -1,4 +1,4 @@
-package api
+package proxy
 
 import (
 	"github.com/spf13/cobra"
@@ -60,7 +60,8 @@ func setup() {
 	common.InitDatabase()
 	// 4. 初始化阿波罗配置
 	//common.InitApollo(apoEnv)
-
+	// 5.初始化redis
+	common.InitRedis()
 }
 
 func run() error {
