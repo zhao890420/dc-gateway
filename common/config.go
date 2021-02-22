@@ -11,6 +11,9 @@ var DefLogger *zap.Logger
 var AccessLogger *zap.Logger
 var TimeLocation *time.Location
 
+type Config struct {
+}
+
 func GetConfig() *goconfig.ConfigFile {
 	return config
 }
@@ -27,4 +30,7 @@ func InitConfigFile(configFile string) {
 		TimeLocation = location
 	}
 	DefLogger.Info("======finish configFile init ")
+}
+
+func (c Config) Destroy() {
 }

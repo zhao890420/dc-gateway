@@ -19,3 +19,9 @@ func InitDatabase() error {
 	DefLogger.Info("======finish db init ")
 	return nil
 }
+
+type Db struct {
+}
+
+func (c Db) Destroy() {
+}
